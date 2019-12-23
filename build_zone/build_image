@@ -22,8 +22,8 @@ do
 done
 
 if [ ! -z "${HELP}" ]; then
-  echo $(usage()))
+  echo $(usage)
   exit 0
 fi
 
-docker build -t "playtechnique/jinkies:${VERSION}"
+docker build -t "playtechnique/jinkies:${VERSION}" .
