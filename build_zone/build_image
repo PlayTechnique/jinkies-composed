@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -e
+
+NAME=$(basename $0)
+function usage() {
+  cat <<EOS
+  Usage: ${NAME} - builds the container
+  Arguments:
+    -v -- Version number to tag the build with. Defaults to latest.
+EOS
+}
+
+VERSION="latest"
+
+for arg in $@
+do
+  case $arg in
+    "-v"               )  shift; VERSION=$1; shift;;
+    "-h" | "--help"    )  HELP="true"; shift;;
+  esac
+done
+
+if [ ! -z "${HELP}" ]; then
+  echo $(usage()))
+  exit 0
+fi
+
+docker build -t "playtechnique/jinkies:${VERSION}"
