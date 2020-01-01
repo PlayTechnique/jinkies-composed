@@ -4,6 +4,7 @@ RUN dnf update -y && dnf install -y java-11-openjdk && mkdir /var/jenkins_home/ 
 
 COPY jenkins.war /var/jenkins_home/
 
+ENV JENKINS_HOME /var/jenkins_home
 WORKDIR /var/jenkins_home
 
 RUN chown jenkins:jenkins jenkins.war
